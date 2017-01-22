@@ -9,7 +9,9 @@
 		end
 	end	
 # end
-c
+
+#if character is a space move rest down a line, if not then go back one
+
 puts "give a length"
 length = gets.chomp.to_i
 puts "give a string"
