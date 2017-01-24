@@ -1,4 +1,3 @@
-
 class Wrapper
   
   def initialize (string, length)
@@ -43,3 +42,5 @@ string = gets.chomp
 
 wrapping = Wrapper.new(string, length)
 wrapping.wrap
+
+
