@@ -1,3 +1,4 @@
+
 class Wrapper
   
   def initialize (string, length)
@@ -31,10 +32,6 @@ end
 
 # previous_space = space_index.max 
 
-
-
-
-
 puts "give a length"
 length = gets.chomp.to_i
 puts "give a string"
@@ -42,5 +39,6 @@ string = gets.chomp
 
 wrapping = Wrapper.new(string, length)
 wrapping.wrap
+
 
 
