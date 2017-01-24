@@ -1,56 +1,44 @@
-def next_line(words, length)
-  # return -1 if words.length == 1 
-  total_length = 0
-  position = 0
-   puts "words: #{words.join(' ')}"
-  words.each_with_index do |word, index|
-    total_length += word.length
-    if total_length > length
-      position = index
-      # break
+
+class Wrapper
+  
+  def initialize (string, length)
+    @string = string
+    @length = length 
+  end   
+
+  def wrap
+    space_index = []
+    lines = 1
+    add_length = @length
+    while @string.length / lines >= @length do
+    @string.each_char.with_index do |character, index|
+      if character == " " && index <= add_length -1
+        space_index.push(index)
+      end
+    end  
+    previous_space = space_index.max
+       @string.each_char.with_index do |c, i| 
+          if i == previous_space
+            # c.sub!(" ","\n")
+            @string[previous_space] = "\n"
+            lines += 1
+            add_length += @length
+          end
+        end     
     end
-  end
-  return position
-end
+    puts @string      
+  end   
+end 
 
-
-
-
-
-def wrap(length, string)
-  return if string.length == 0
-  # puts "string: #{string.inspect}"
-  puts "#{string}"
-  words = string.split(" ")
-  next_position = next_line(words, length)
-  return if next_position == -1 
-
-  if next_position == 0
-    puts "current_phrase: #{words[0]}"
-    next_string = words[1..-1]
-  else
-    puts "current_phrase: #{words[0..next_position - 1]}"
-    next_string = words[next_position .. -1].join(" ")
-  end
-  wrap(length, next_string.join(' ')) 
-end
+# previous_space = space_index.max 
 
 puts "give a length"
 length = gets.chomp.to_i
 puts "give a string"
 string = gets.chomp
 
-wrap(length, string)
-
-
-
-
-
-
-
-
-
-
+wrapping = Wrapper.new(string, length)
+wrapping.wrap
 
 
 

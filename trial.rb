@@ -18,6 +18,7 @@
         line_length += 1
       end
     end
+    puts string
   end
 
 puts "give a length"
